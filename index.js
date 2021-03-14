@@ -1,5 +1,5 @@
 /*
- *  @Soldy\initrc\2021.02.21\GPL3
+ *  @Soldy\levelrunnerrc\2021.02.29\GPL3
  */
 'use strict';
 
@@ -52,7 +52,8 @@ const levelRunnerBase = function(before_in, after_in, level_in){
      */
     const _add = function(fun, level, name){
         if(
-            ( level >= _level ) ||
+             ( Number.isInteger(level) === false ) ||
+             ( level >= _level ) ||
              ( 0 > level ) ||
              ( typeof fun !== 'function' )
         )
