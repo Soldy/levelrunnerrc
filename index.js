@@ -18,6 +18,15 @@ const levelRunnerBase = function(before_in, after_in, level_in){
         return _add(fun, level, name);
     };
     /*
+     * @param {integer} level
+     * @param {string} name
+     * @public
+     * @return {boolean}
+     */
+    this.del = function(level, name){
+        return _del(level, name); 
+    }
+    /*
      * @public
      */
     this.run = function(){
@@ -79,22 +88,22 @@ const levelRunnerBase = function(before_in, after_in, level_in){
      * @private
      */
     const _execute = async function(procedure){
-        if(procedure.fun.constructor.name === 'AsyncFunction')
+        if ( procedure.fun.constructor.name === 'AsyncFunction' )
             return await procedure.fun();
         return procedure.fun();
     };
     // init
     if (
-        ( typeof level_in !== 'undefined') &&
+        ( typeof level_in !== 'undefined' ) &&
         ( Number.isInteger(level_in) ) &&
         ( level_in > 0 )
     )
         _level = level_in;
     for(let i =0; _level> i; i++)
         _procedures.push([]);
-    if(typeof afterIn === 'function')
+    if ( typeof afterIn === 'function' )
         _after = after_in;
-    if(typeof beforeIn === 'function')
+    if( typeof beforeIn === 'function' )
         _before = before_in;
 };
 
