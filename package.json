@@ -21,6 +21,6 @@
     "url": "https://github.com/Soldy/levelrunnerrc/issues"
   },
   "devDependencies": {
-    "nanoTest": "^0.9.9-beta17c"
+    "nanoTest": "0.9.9-beta27"
   }
 }
