@@ -60,13 +60,30 @@ const levelRunnerBase = function(before_in, after_in, level_in){
      * @return {boolean}
      */
     const _add = function(fun, level, name){
-        if(
-             ( Number.isInteger(level) === false ) ||
-             ( level >= _level ) ||
-             ( 0 > level ) ||
-             ( typeof fun !== 'function' )
-        )
-            return false;
+        if ( typeof fun !== 'function' )
+            throw new TypeError (
+                '"fun" is a "'+
+                (typeof fun)+
+                '" not a function.'
+            );
+        if ( typeof level !== 'number' )
+            throw new TypeError (
+                '"level" is a "'+
+                (typeof level)+
+                '" not a number.'
+            );
+        if ( Number.isInteger(level) === false )
+            throw new TypeError (
+                '"level" is not an integer.'
+            );
+        if ( 0 > level )
+            throw new TypeError (
+                '"level" is smaller than 0'
+            );
+        if ( level >= _level )
+            throw new TypeError (
+                '"level" is bigger than the max level'
+            );
         _procedures[level].push({
             fun:fun,
             name:name
