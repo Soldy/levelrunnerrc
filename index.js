@@ -94,7 +94,7 @@ const levelRunnerBase = function(before_in, after_in, level_in){
     };
     // init
     if (
-        ( typeof level_in !== 'undefined' ) &&
+        ( typeof level_in === 'number' ) &&
         ( Number.isInteger(level_in) ) &&
         ( level_in > 0 )
     )
