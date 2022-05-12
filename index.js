@@ -98,7 +98,7 @@ const levelRunnerBase = function(before_in, after_in, level_in){
         ( Number.isInteger(level_in) ) &&
         ( level_in > 0 )
     )
-        _level = level_in;
+        _level = parseInt(level_in);
     for(let i =0; _level> i; i++)
         _procedures.push([]);
     if ( typeof afterIn === 'function' )
