@@ -18,7 +18,7 @@ nanoTest.add(
 
 );
 nanoTest.add(
-    '',
+    'add function to level one',
     {
         'function':runner.add,
         'options' :[
@@ -32,7 +32,7 @@ nanoTest.add(
     true
 );
 nanoTest.add(
-    '',
+    'run runner',
     {
         'function':function(){runner.run();return true;},
         'options' :[
