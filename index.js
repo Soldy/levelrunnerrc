@@ -6,7 +6,7 @@
 /*
  * @prototype
  */
-const levelRunnerBase = function(before_in, after_in, level_in){
+const levelRunnerBase = function(before_in_, after_in_, level_in_){
     /*
      * @param {function} func
      * @param {integer} level
@@ -111,17 +111,17 @@ const levelRunnerBase = function(before_in, after_in, level_in){
     };
     // init
     if (
-        ( typeof level_in === 'number' ) &&
-        ( Number.isInteger(level_in) ) &&
-        ( level_in > 0 )
+        ( typeof level_in_ === 'number' ) &&
+        ( Number.isInteger(level_in_) ) &&
+        ( level_in_ > 0 )
     )
-        _level = parseInt(level_in);
+        _level = parseInt(level_in_);
     for(let i =0; _level> i; i++)
         _procedures.push([]);
-    if ( typeof afterIn === 'function' )
-        _after = after_in;
-    if( typeof beforeIn === 'function' )
-        _before = before_in;
+    if ( typeof after_in_ === 'function' )
+        _after = after_in_;
+    if( typeof before_in_ === 'function' )
+        _before = before_in_;
 };
 
 

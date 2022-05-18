@@ -3,14 +3,48 @@ const nanoTest  = new (require('nanoTest')).test({
     'progress_bar' : false
 });
 
-const runner =  new (require('./index.js')).base(()=>{},()=>{},3);
-let level_one = false;
+const _runner_class =  (require('./index.js')).base;
 
+let level_one = false;
+let level_before = false;
+let level_after = false;
+
+const runner =  new _runner_class(
+    function(){
+        level_before = true;
+    },
+    function(){
+        level_after = true;
+    },
+    3
+);
 nanoTest.add(
     'level_one status',
     {
         'function':function(){
              return level_one;
+        }
+    },
+    '===',
+    false
+
+);
+nanoTest.add(
+    'before level status',
+    {
+        'function':function(){
+             return level_before;
+        }
+    },
+    '===',
+    false
+
+);
+nanoTest.add(
+    'after level status',
+    {
+        'function':function(){
+             return level_after;
         }
     },
     '===',
@@ -50,6 +84,26 @@ nanoTest.add(
     '===',
     true
 
+);
+nanoTest.add(
+    'before level status',
+    {
+        'function':function(){
+             return level_before;
+        }
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'after level status',
+    {
+        'function':function(){
+             return level_after;
+        }
+    },
+    '===',
+    true
 );
 
 nanoTest.run();
