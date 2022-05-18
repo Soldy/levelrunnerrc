@@ -22,7 +22,7 @@ nanoTest.add(
     'level_one status',
     {
         'function':function(){
-             return level_one;
+            return level_one;
         }
     },
     '===',
@@ -33,7 +33,7 @@ nanoTest.add(
     'before level status',
     {
         'function':function(){
-             return level_before;
+            return level_before;
         }
     },
     '===',
@@ -44,7 +44,7 @@ nanoTest.add(
     'after level status',
     {
         'function':function(){
-             return level_after;
+            return level_after;
         }
     },
     '===',
@@ -57,7 +57,7 @@ nanoTest.add(
         'function':runner.add,
         'options' :[
             function(){
-                 level_one = true;
+                level_one = true;
             },
             1
         ]
@@ -78,7 +78,7 @@ nanoTest.add(
     'level_one status',
     {
         'function':function(){
-             return level_one;
+            return level_one;
         }
     },
     '===',
@@ -89,7 +89,7 @@ nanoTest.add(
     'before level status',
     {
         'function':function(){
-             return level_before;
+            return level_before;
         }
     },
     '===',
@@ -99,7 +99,7 @@ nanoTest.add(
     'after level status',
     {
         'function':function(){
-             return level_after;
+            return level_after;
         }
     },
     '===',
