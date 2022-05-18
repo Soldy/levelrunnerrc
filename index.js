@@ -25,7 +25,7 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
      */
     this.del = function(level, name){
         return _del(level, name); 
-    }
+    };
     /*
      * @public
      */
