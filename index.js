@@ -18,15 +18,6 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
         return _add(fun, level, name);
     };
     /*
-     * @param {integer} level
-     * @param {string} name
-     * @public
-     * @return {boolean}
-     */
-    this.del = function(level, name){
-        return _del(level, name); 
-    };
-    /*
      * @public
      */
     this.run = function(){
