@@ -4,6 +4,10 @@
 'use strict';
 
 /*
+ * @param {function} before_in_
+ * @param {function} after_in_
+ * @param {integer}  level_in_
+ * @param {function} func
  * @prototype
  */
 const levelRunnerBase = function(before_in_, after_in_, level_in_){
