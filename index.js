@@ -105,19 +105,41 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
         return procedure.fun();
     };
     // init
-    if (
-        ( typeof level_in_ === 'number' ) &&
-        ( Number.isInteger(level_in_) ) &&
-        ( level_in_ > 0 )&&
-        ( 100 > level_in_ )
-    )
-        _level = parseInt(level_in_);
+    if ( typeof level_in_ !== 'number' )
+        throw new TypeError (
+            'level number is "'+
+            level_in_+
+            '" that not a number.'
+        );
+    if (!Number.isInteger(level_in_) )
+        throw new TypeError (
+            'level number is "'+
+            level_in_+
+            '" that not an integer.'
+        );
+    if ( 1 > level_in_ )
+        throw new TypeError (
+            'level number is "'+
+            level_in_+
+            '" that smaller than 1.'
+        );
+    if (  level_in_ > 100 )
+        throw new TypeError (
+            'level number is too high"'
+        );
+    _level = parseInt(level_in_);
     for(let i =0; _level> i; i++)
         _procedures.push([]);
-    if ( typeof after_in_ === 'function' )
-        _after = after_in_;
-    if( typeof before_in_ === 'function' )
-        _before = before_in_;
+    if ( typeof after_in_ !== 'function' )
+        throw new TypeError (
+            'after is not a function'
+        );
+    if( typeof before_in_ !== 'function' )
+        throw new TypeError (
+            'before is not a function'
+        );
+    _before = before_in_;
+    _after = after_in_;
 };
 
 
