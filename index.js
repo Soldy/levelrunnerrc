@@ -44,6 +44,11 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
     let _procedures = [];
     /*
      * @private
+     * @var {array}
+     */
+    let _names = [];
+    /*
+     * @private
      * @var {integer}
      */
     let _level = 10;
@@ -79,6 +84,21 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
             throw new TypeError (
                 '"level" is bigger than the max level'
             );
+        if(typeof name !== 'undefined'){
+            if(typeof name !== 'string')
+                throw new TypeError (
+                    'name is a '+
+                    (typeof name).toString()+
+                    ' not a string'
+                );
+            if(_names.indexOf(name) > -1)
+                throw new Error (
+                    'process "'+
+                    name+
+                    '" is already added.'
+                );
+            _names.push(name.toString());
+        }
         _procedures[level].push({
             fun:fun,
             name:name

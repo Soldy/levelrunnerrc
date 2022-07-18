@@ -174,6 +174,49 @@ nanoTest.add(
     true
 );
 nanoTest.add(
+    'add function to level one with integer name',
+    {
+        'function':runner.add,
+        'options' :[
+            function(){
+               return 1;
+            },
+            1,
+            564
+        ]
+    },
+    'error'
+);
+nanoTest.add(
+    'add function to level one with name',
+    {
+        'function':runner.add,
+        'options' :[
+            function(){
+               return 1;
+            },
+            1,
+            'test'
+        ]
+    },
+    '===',
+    true
+);
+nanoTest.add(
+    'add function to level one with name again',
+    {
+        'function':runner.add,
+        'options' :[
+            function(){
+               return 1;
+            },
+            1,
+            'test'
+        ]
+    },
+    'error',
+);
+nanoTest.add(
     'add string as a function to level one',
     {
         'function':runner.add,
