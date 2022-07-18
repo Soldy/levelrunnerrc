@@ -108,7 +108,8 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
     if (
         ( typeof level_in_ === 'number' ) &&
         ( Number.isInteger(level_in_) ) &&
-        ( level_in_ > 0 )
+        ( level_in_ > 0 )&&
+        ( 100 > level_in_ )
     )
         _level = parseInt(level_in_);
     for(let i =0; _level> i; i++)
