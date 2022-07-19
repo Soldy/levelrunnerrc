@@ -4,7 +4,6 @@ const nanoTest  = new (require('nanoTest')).test({
 });
 
 const _runner_class =  (require('./index.js')).Base;
-console.log(_runner_class);
 let level_one = false;
 let level_before = false;
 let level_after = false;
