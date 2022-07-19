@@ -10,7 +10,7 @@
  * @param {function} func
  * @prototype
  */
-const levelRunnerBase = function(before_in_, after_in_, level_in_){
+const LevelRunner = function(before_in_, after_in_, level_in_){
     /*
      * @param {function} func
      * @param {integer} level
@@ -162,6 +162,6 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
 };
 
 
-exports.base = levelRunnerBase ;
-exports.Base = levelRunnerBase ;
-exports.LevelRunner = levelRunnerBase ;
+exports.base = LevelRunner ;
+exports.Base = LevelRunner ;
+exports.LevelRunner = LevelRunner ;
