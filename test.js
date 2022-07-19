@@ -3,8 +3,8 @@ const nanoTest  = new (require('nanoTest')).test({
     'progress_bar' : false
 });
 
-const _runner_class =  (require('./index.js')).base;
-
+const _runner_class =  (require('./index.js')).Base;
+console.log(_runner_class);
 let level_one = false;
 let level_before = false;
 let level_after = false;
@@ -170,8 +170,7 @@ nanoTest.add(
             1
         ]
     },
-    '===',
-    true
+    '!error'
 );
 nanoTest.add(
     'add function to level one with integer name',
@@ -199,8 +198,7 @@ nanoTest.add(
             'test'
         ]
     },
-    '===',
-    true
+    '!error',
 );
 nanoTest.add(
     'add function to level one with name again',

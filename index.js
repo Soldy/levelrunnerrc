@@ -16,16 +16,16 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
      * @param {integer} level
      * @param {string} name
      * @public
-     * @return {boolean}
+     * @return {void}
      */
     this.add = function(fun, level, name){
-        return _add(fun, level, name);
+        _add(fun, level, name);
     };
     /*
      * @public
      */
-    this.run = function(){
-        return _run();
+    this.run = async function(){
+        await _run();
     };
     /*
      * @private
@@ -57,7 +57,7 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
      * @param {integer} level
      * @param {string} name
      * @private
-     * @return {boolean}
+     * @return {void}
      */
     const _add = function(fun, level, name){
         if ( typeof fun !== 'function' )
@@ -103,7 +103,6 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
             fun:fun,
             name:name
         });
-        return true;
     };
     /*
      * @private
@@ -165,3 +164,4 @@ const levelRunnerBase = function(before_in_, after_in_, level_in_){
 
 exports.base = levelRunnerBase ;
 exports.Base = levelRunnerBase ;
+exports.LevelRunner = levelRunnerBase ;
