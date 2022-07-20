@@ -60,6 +60,7 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
      * @return {void}
      */
     const _add = function(fun, level, name){
+        let runner = {};
         if ( typeof fun !== 'function' )
             throw new TypeError (
                 '"fun" is a "'+
@@ -84,6 +85,7 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
             throw new TypeError (
                 '"level" is bigger than the max level'
             );
+        runner.fun = fun;
         if(typeof name !== 'undefined'){
             if(typeof name !== 'string')
                 throw new TypeError (
@@ -98,11 +100,9 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
                     '" is already added.'
                 );
             _names.push(name.toString());
+            runner.name = name;
         }
-        _procedures[level].push({
-            fun:fun,
-            name:name
-        });
+        _procedures[level].push(runner);
     };
     /*
      * @private

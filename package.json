@@ -1,6 +1,6 @@
 {
   "name": "levelrunnerrc",
-  "version": "0.99.3",
+  "version": "1.0.0",
   "description": "multi level task runner",
   "main": "index.js",
   "scripts": {
