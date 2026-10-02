@@ -179,8 +179,8 @@ const LevelRunner = function(before_in_ = ()=>{}, after_in_ = ()=>{}, level_in_ 
         throw new TypeError (
             'before is not a function'
         );
-    _level = parseInt(level_in_+1);
-    for(let i =0; _level> i; i++)
+    _level = parseInt(level_in_);
+    for(let i =0; _level >= i; i++)
         _procedures.push([]);
     _before = before_in_;
     _after = after_in_;
