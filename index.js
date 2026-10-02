@@ -131,6 +131,10 @@ const LevelRunner = function(before_in_ = ()=>{}, after_in_ = ()=>{}, level_in_ 
             throw new TypeError (
                 '"level" is bigger than the max level'
             );
+        if ( typeof _procedures[level] === 'undefined' )
+            throw new TypeError (
+                '"level" not exist '
+            );
         if(typeof name !== 'string')
             throw new TypeError (
                 'name is a '+
