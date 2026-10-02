@@ -59,8 +59,40 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
      * @private
      * @return {void}
      */
-    const _add = function(fun, level, name){
+    const _add = function(fun_, level_, name_ = 'none'){
         let runner = {};
+        _check(fun_, level_, name_);
+        runner.fun = fun_;
+        _names.push(name_.toString());
+        runner.name = name_;
+        _procedures[level_].push(runner);
+    };
+    /*
+     * @private
+     */
+    const _run=async function(){
+        await _before();
+        for (let p of _procedures) 
+            for (let i of p) 
+                await _execute(i);
+        await _after();
+    };
+    /*
+     * @param {object} procedure
+     * @private
+     */
+    const _execute = async function(procedure){
+        return await procedure.fun();
+    };
+
+    /*
+     * @param {function} func
+     * @param {integer} level
+     * @param {string} name
+     * @private
+     * @return {void}
+     */
+    const _check = function(fun, level, name){
         if ( typeof fun !== 'function' )
             throw new TypeError (
                 '"fun" is a "'+
@@ -85,43 +117,18 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
             throw new TypeError (
                 '"level" is bigger than the max level'
             );
-        runner.fun = fun;
-        if(typeof name !== 'undefined'){
-            if(typeof name !== 'string')
-                throw new TypeError (
-                    'name is a '+
-                    (typeof name).toString()+
-                    ' not a string'
-                );
-            if(_names.indexOf(name) > -1)
-                throw new Error (
-                    'process "'+
-                    name+
-                    '" is already added.'
-                );
-            _names.push(name.toString());
-            runner.name = name;
-        }
-        _procedures[level].push(runner);
-    };
-    /*
-     * @private
-     */
-    const _run=async function(){
-        _before();
-        for (let p of _procedures) 
-            for (let i of p) 
-                await _execute(i);
-        _after();
-    };
-    /*
-     * @param {object} procedure
-     * @private
-     */
-    const _execute = async function(procedure){
-        if ( procedure.fun.constructor.name === 'AsyncFunction' )
-            return await procedure.fun();
-        return procedure.fun();
+        if(typeof name !== 'string')
+            throw new TypeError (
+                'name is a '+
+                (typeof name).toString()+
+                ' not a string'
+            );
+        if(_names.indexOf(name) > -1)
+            throw new Error (
+                'process "'+
+                name+
+                '" is already added.'
+            );
     };
     // init
     if ( typeof level_in_ !== 'number' )
