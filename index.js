@@ -4,13 +4,19 @@
 'use strict';
 
 /*
+ *
+ * Empty before- and after-functions are just fine.
+ * We do not force the user to use this feature.
+ * If you have a car with 300 horsepower,
+ * you do not always have to use all of it.
+ *
  * @param {function} before_in_
  * @param {function} after_in_
  * @param {integer}  level_in_
  * @param {function} func
  * @prototype
  */
-const LevelRunner = function(before_in_, after_in_, level_in_){
+const LevelRunner = function(before_in_ = ()=>{}, after_in_ = ()=>{}, level_in_ = 10){
     /*
      * @param {function} func
      * @param {integer} level
@@ -53,13 +59,17 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
      */
     let _level = 10;
     /*
+     *  I am not judgy. 
+     *  If someone left an empty function.
+     *  I think that's a polition.
+     *
      * @param {function} func
      * @param {integer} level
      * @param {string} name
      * @private
      * @return {void}
      */
-    const _add = function(fun_, level_, name_ = 'none'){
+    const _add = function(fun_ = ()=>{}, level_ = 1, name_ = 'none'){
         let runner = {};
         _check(fun_, level_, name_);
         runner.fun = fun_;
@@ -117,6 +127,10 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
             throw new TypeError (
                 '"level" is bigger than the max level'
             );
+        if ( level >= _procedures.length )
+            throw new TypeError (
+                '"level" is bigger than the max level'
+            );
         if(typeof name !== 'string')
             throw new TypeError (
                 'name is a '+
@@ -153,9 +167,6 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
         throw new TypeError (
             'level number is too high"'
         );
-    _level = parseInt(level_in_);
-    for(let i =0; _level> i; i++)
-        _procedures.push([]);
     if ( typeof after_in_ !== 'function' )
         throw new TypeError (
             'after is not a function'
@@ -164,11 +175,15 @@ const LevelRunner = function(before_in_, after_in_, level_in_){
         throw new TypeError (
             'before is not a function'
         );
+    _level = parseInt(level_in_+1);
+    for(let i =0; _level> i; i++)
+        _procedures.push([]);
     _before = before_in_;
     _after = after_in_;
 };
 
-
+//For compatibility reasons, we have to leave these 3 exports.
+//Not ideal maybe terrible but stay here for now.
 exports.base = LevelRunner ;
 exports.Base = LevelRunner ;
 exports.LevelRunner = LevelRunner ;
